@@ -1,4 +1,9 @@
 # Docker
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'angular-app-kubernetes'
+    publishLocation: 'pipeline'
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
