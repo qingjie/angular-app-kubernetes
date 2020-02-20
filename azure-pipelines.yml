@@ -1,9 +1,4 @@
 # Docker
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'angular-app-kubernetes'
-    publishLocation: 'pipeline'
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
@@ -41,5 +36,9 @@ stages:
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          $(tag)
-    - task: PublishBuildArtifacts@1
+          $(tag) 
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'angular-app-kubernetes'
+        publishLocation: 'pipeline'     
